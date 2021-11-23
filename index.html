@@ -21,6 +21,10 @@
             right: 2rem;
 	z-index: 9999;
         }
+	    .zanting{
+	    font-size: 1px;
+    		color: white;
+	    }
     </style>
 </head>
 
@@ -28,11 +32,13 @@
     <div id='div_btn_container'>
         <div id="div_btn_inner">
             <div class='div_music_tips'></div>
-            <div class="div_btn" id="div_music" onclick="music_switch()">
+            <div class="div_btn" id="div_music" onclick="music_switch()" style="
+    text-align: center;">
                 <!-- 音乐按钮部分 -->
                 <img id='img_music' src="img/mu.png"
 		     onclick="bf();"
                     style='width:20px;height:20px;'>
+		    <div class='zanting'>已暂停</div>
                 <audio id="audio_music" autoplay="autoplay" loop="loop">
                     <source type="audio/mpeg" />
                 </audio>
@@ -268,10 +274,13 @@
 	function bf(){
 	 var audio = document.getElementById('audio'); 
 		var img_music = document.getElementById('img_music');
+		var zanting = document.querySelector('.zanting')
+		
 	 if(audio!==null){             
 	    //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
 	  if(audio.paused)                     {      
 		  img_music.style="-webkit-animation:music_play_rotate 1s linear infinite;width:20px;height:20px;"
+		  zanting.innerHTML = ''
 	      audio.play();//audio.play();// 这个就是播放  
 	  }else{
 		  img_music.style="width:20px;height:20px;"
