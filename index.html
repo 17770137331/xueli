@@ -30,6 +30,7 @@
             <div class="div_btn" id="div_music" onclick="music_switch()">
                 <!-- 音乐按钮部分 -->
                 <img id='img_music' src="img/mu.png"
+		     onclick="bf();"
                     style='-webkit-animation:music_play_rotate 1s linear infinite;width:20px;height:20px;'>
                 <audio id="audio_music" autoplay="autoplay" loop="loop">
                     <source type="audio/mpeg" />
@@ -256,18 +257,24 @@
     <script src="js/script.js"></script>
     <audio src="music/2.mp3" autoplay="true" loop="true" id="audio"></audio>
 	<script>
-		(function(){
-        var audio = document.querySelector('#audio');
-        function PlayAudio() {
-               audio.load(); // iOS 9  需要load一下, 否则直接play无效
-               audio.play(); // iOS 7/8 需要play一下
-         }
-    audio.addEventListener('play', function() {
-        // 当 audio 能够播放后, 移除这个事件
-        window.removeEventListener('touchstart', PlayAudio, false);
-      }, false);
-    window.addEventListener('touchstart', PlayAudio, false);
-})();
+	$(function() {
+		$('audio')[0].play()
+	})
+	function rbf(){
+	 var audio = document.getElementById('audio'); 
+	 audio.currentTime = 0;
+	}
+	function bf(){
+	 var audio = document.getElementById('audio'); 
+	 if(audio!==null){             
+	    //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+	  if(audio.paused)                     {                 
+	      audio.play();//audio.play();// 这个就是播放  
+	  }else{
+	   audio.pause();// 这个就是暂停
+	  }
+	 } 
+	}
     </script>
 </body>
 
