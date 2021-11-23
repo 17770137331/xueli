@@ -254,8 +254,14 @@
     <script src="js/bubblefloat.js"></script>
     <script src='js/splitting.min.js'></script>
     <script src="js/script.js"></script>
-    <audio src="music/2.mp3" autoplay="true" loop="true"></audio>
+    <audio src="music/2.mp3" autoplay="true" loop="true" id="audio"></audio>
+	<script>
+        
+	(()=> {
+		document.querySelector('audio').play()
+	})()
 
+    </script>
 </body>
 
 
