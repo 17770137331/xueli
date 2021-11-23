@@ -19,6 +19,7 @@
             position: absolute;
             top: 2rem;
             right: 2rem;
+	z-index: 9999;
         }
     </style>
 </head>
@@ -31,7 +32,7 @@
                 <!-- 音乐按钮部分 -->
                 <img id='img_music' src="img/mu.png"
 		     onclick="bf();"
-                    style='-webkit-animation:music_play_rotate 1s linear infinite;width:20px;height:20px;'>
+                    style='width:20px;height:20px;'>
                 <audio id="audio_music" autoplay="autoplay" loop="loop">
                     <source type="audio/mpeg" />
                 </audio>
@@ -266,11 +267,14 @@
 	}
 	function bf(){
 	 var audio = document.getElementById('audio'); 
+		var img_music = document.getElementById('img_music');
 	 if(audio!==null){             
 	    //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
-	  if(audio.paused)                     {                 
+	  if(audio.paused)                     {      
+		  img_music.style="-webkit-animation:music_play_rotate 1s linear infinite;"
 	      audio.play();//audio.play();// 这个就是播放  
 	  }else{
+		  img_music.style="width:20px;height:20px;"
 	   audio.pause();// 这个就是暂停
 	  }
 	 } 
